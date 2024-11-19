@@ -8,10 +8,6 @@ def is_odd(num):
             return False
         return True
 
-print('Check for odd number with simple binary search example \n')
-print(4, '==>' ,  is_odd(4))
-print(9, '==>' ,  is_odd(9))
-print()
 
 def bubble_sort(array, asc=True):
     """
@@ -38,11 +34,6 @@ def bubble_sort(array, asc=True):
         last_index -= 1 # move right most index to the left after pass through
     return array
 
-print('Sort arrays using bubble sort \n')
-print([4, 2, 7, 1, 3], '==>' , bubble_sort([4, 2, 7, 1, 3], False))
-print([65, 55, 45, 35, 25, 15, 10], '==>' ,  bubble_sort([65, 55, 45, 35, 25, 15, 10]))
-print()
-
 def has_duplicates(array):
     """ Checks for duplicates in an array using O(N^2) """
     for i, num_i in enumerate(array):
@@ -50,8 +41,3 @@ def has_duplicates(array):
             if i != j and num_i == num_j:
                 return True
     return False
-
-print('Check if array has duplicates using O(N^2)')
-print([1, 2, 4, 5, 6], '==>' , has_duplicates([1, 2, 4, 5, 6]))
-print([1, 2, 4, 5, 2], '==>' , has_duplicates([1, 2, 4, 5, 2]))
-print()
