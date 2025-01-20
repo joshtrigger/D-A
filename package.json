@@ -1,0 +1,19 @@
+{
+  "name": "d-a",
+  "version": "1.0.0",
+  "description": "data structures and algorithms",
+  "main": "index.js",
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

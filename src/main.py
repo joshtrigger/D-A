@@ -1,8 +1,7 @@
 """ Practice examples on Data Structures & Algorithms """
 
 def is_odd(num):
-    """ Checks for odd numbers using binary search aka O(logN) """
-
+    """ Checks for odd numbers using binary search """
     for i in range(2, num):
         if num % i == 0:
             return False
@@ -11,7 +10,7 @@ def is_odd(num):
 
 def bubble_sort(array, asc=True):
     """
-    Sorts arrays of numbers in ascending order using bubble sort aka O(N^2)
+    Sorts arrays of numbers in ascending order using bubble sort 
 
     Args:
         array (list): arrray to be sorted
@@ -35,9 +34,31 @@ def bubble_sort(array, asc=True):
     return array
 
 def has_duplicates(array):
-    """ Checks for duplicates in an array using O(N^2) """
+    """ Checks for duplicates in an array """
     for i, num_i in enumerate(array):
         for j, num_j in enumerate(array):
             if i != j and num_i == num_j:
                 return True
     return False
+
+def insertion_sort(array, asc = True):
+    """ Sorting an array with insertion sort """
+    count = 0
+    for index in range(1 if asc else len(array) - 2, len(array) if asc else 1, 1 if asc else -1):
+        temp_value = array[index]
+        position = index - 1 if asc else index + 1
+        print({'position': position, 'index': index, 'temp_value': temp_value,'array':array})
+        # return []
+        # condition = position >= 0
+
+        while position >= 0 if asc else position < len(array):
+            count+=1
+            if array[position] > temp_value:
+                array[position + 1 if asc else position - 1] = array[position]
+                position = position - 1 if asc else position + 1
+            else :
+                break
+
+        array[position + 1 if asc else position - 1] = temp_value
+        print('other array >>>>>>>>>>', array, 'for: ', count)
+    return array

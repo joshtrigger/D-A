@@ -1,10 +1,10 @@
 /**
- * Checks for duplicates in an array using O(N) 
- * 
+ * Checks for duplicates in an array using O(N)
+ *
  * @param {Array} array array of number to be checked
  * @returns boolean value indicating whether an array has duplicates or not
  */
-function hasDuplicates(array) {
+const hasDuplicates = (array) => {
   let existingNumbers = [];
 
   for (let i = 0; i < array.length; i++) {
@@ -15,7 +15,48 @@ function hasDuplicates(array) {
     }
   }
   return false;
-}
+};
 
-console.log(hasDuplicates([1, 2, 4, 6, 2, 8]));
-console.log(hasDuplicates([1, 2, 4, 6, 7, 9]));
+const wordBuilder = (letters) => {
+  let collections = [];
+  for (let i = 0; i < letters.length; i++) {
+    for (let j = 0; j < letters.length; j++) {
+      if (i !== j) {
+        collections.push(letters[i] + letters[j]);
+      }
+    }
+  }
+
+  return collections;
+};
+
+const intersection = (array1, array2) => {
+  let smallerArray;
+  let largerArray;
+
+  if (array1.length > array2.length) {
+    smallerArray = array2;
+    largerArray = array1;
+  } else {
+    smallerArray = array1;
+    largerArray = array2;
+  }
+
+  let hashTable = {};
+
+  let result = []
+
+  for (const el1 of largerArray) {
+    hashTable[el1] = true;
+  }
+
+  for (const el2 of smallerArray) {
+    if (hashTable[el2]) {
+      result.push(el2);
+    }
+  }
+
+  return result;
+};
+
+module.exports = { hasDuplicates, wordBuilder, intersection };
