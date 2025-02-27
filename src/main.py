@@ -47,9 +47,6 @@ def insertion_sort(array, asc = True):
     for index in range(1 if asc else len(array) - 2, len(array) if asc else 1, 1 if asc else -1):
         temp_value = array[index]
         position = index - 1 if asc else index + 1
-        print({'position': position, 'index': index, 'temp_value': temp_value,'array':array})
-        # return []
-        # condition = position >= 0
 
         while position >= 0 if asc else position < len(array):
             count+=1
@@ -60,5 +57,21 @@ def insertion_sort(array, asc = True):
                 break
 
         array[position + 1 if asc else position - 1] = temp_value
-        print('other array >>>>>>>>>>', array, 'for: ', count)
     return array
+
+def double_array(array, index = 0):
+    # Base case is when index is past end of array
+    if index >= len(array):
+        return
+    array[index] *= 2
+    double_array(array, index + 1)
+
+def factorial(number):
+    """"""
+    if number == 1:
+        return 1
+    else:
+        return number * factorial(number - 1)
+
+def array_sum(array):
+    return array[0] + array_sum(array[1:len(array)-1])
