@@ -59,19 +59,57 @@ def insertion_sort(array, asc = True):
         array[position + 1 if asc else position - 1] = temp_value
     return array
 
-def double_array(array, index = 0):
+def double_array(array: list[int], index = 0) -> list[int]:
+    """ Doubling array in memory """
     # Base case is when index is past end of array
     if index >= len(array):
         return
     array[index] *= 2
     double_array(array, index + 1)
 
-def factorial(number):
-    """"""
+def factorial(number: int) -> int:
+    """ Calculating factorial of number using recursion """
     if number == 1:
         return 1
-    else:
-        return number * factorial(number - 1)
+    return number * factorial(number - 1)
 
-def array_sum(array):
-    return array[0] + array_sum(array[1:len(array)-1])
+def array_sum(array: list[int]) -> int:
+    """ Calculate sum of all integers in array """
+    if len(array) == 0:
+        return 0
+    return array[0] + array_sum(array[1: len(array)])
+
+def sum_of_chars(array_of_strings:list[str]) -> int:
+    """ Function that calculates the sum of all characters in an array """
+    if len(array_of_strings) == 0:
+        return 0
+
+    return len(array_of_strings[0]) + sum_of_chars(array_of_strings[1 : len(array_of_strings)])
+
+def max_number(array_of_numbers: list[int]) -> int:
+    """ Returns maximum number in an array """
+    if len(array_of_numbers) == 1:
+        return array_of_numbers[0]
+
+    calculated_max = max_number(array_of_numbers[1: len(array_of_numbers)])
+
+    if array_of_numbers[0] > calculated_max:
+        return array_of_numbers[0]
+    return calculated_max
+
+def fibonacci(number: int) -> int:
+    """ Calculate fibonacci sequence, without memoization """
+    if number in (0 ,1):
+        return number
+
+    return fibonacci(number - 2) + fibonacci(number - 1)
+
+def fibonacci_v2(number: int, memo: dict = {}) -> int:
+    """ Calculate fibonacci sequence, with memoization """
+    if number in (0 ,1):
+        return number
+
+    if number not in memo:
+        memo[number] = fibonacci_v2(number - 2) + fibonacci_v2(number - 1)
+
+    return memo[number]

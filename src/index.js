@@ -44,7 +44,7 @@ const intersection = (array1, array2) => {
 
   let hashTable = {};
 
-  let result = []
+  let result = [];
 
   for (const el1 of largerArray) {
     hashTable[el1] = true;
@@ -59,15 +59,16 @@ const intersection = (array1, array2) => {
   return result;
 };
 
-// example of using recusrion to print out numbers instead of forLoop
-function countdown(number){
-    console.log(number)
+// example of using recursion to print out numbers instead of forLoop
+function countdown(number) {
+  console.log(number);
 
-    if(number === 0) { // this is the base case
-        return
-    } else{
-        countdown(number - 1)
-    }
+  if (number === 0) {
+    // this is the base case
+    return;
+  } else {
+    countdown(number - 1);
+  }
 }
 
 export default { hasDuplicates, wordBuilder, intersection, countdown };
