@@ -1,7 +1,7 @@
 """ Module for testing functionality """
 
 import pytest
-from src.main import is_odd, bubble_sort, has_duplicates, insertion_sort, double_array, factorial, sum_of_chars, max_number, fibonacci, fibonacci_v2, array_sum
+from src.main import is_odd, bubble_sort, has_duplicates, insertion_sort, double_array, factorial, sum_of_chars, max_number, fibonacci, fibonacci_v2, array_sum, SortArray
 
 @pytest.mark.parametrize(
     "number, result",
@@ -79,3 +79,12 @@ def test_array_sum():
     """ Test sum of all integers """
     result = array_sum([1, 2, 3])
     assert result == 6
+
+def test_quick_sort():
+    """ Test quick sort """
+    test_array = [0, 5, 2, 1, 6, 3]
+
+    sortable_array = SortArray(test_array)
+    sortable_array.quick_sort(0, len(test_array) - 1)
+
+    assert sortable_array.array == [0, 1, 2, 3, 5, 6]

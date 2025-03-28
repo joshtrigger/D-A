@@ -113,3 +113,47 @@ def fibonacci_v2(number: int, memo: dict = {}) -> int:
         memo[number] = fibonacci_v2(number - 2) + fibonacci_v2(number - 1)
 
     return memo[number]
+
+class SortArray():
+    """ Used for quick sort """
+
+    def __init__(self, array) -> None:
+        self.array = array
+
+    def partition(self, left_pointer, right_pointer):
+        """ used to partition an array """
+
+        pivot_index = right_pointer
+        pivot = self.array[right_pointer]
+
+        right_pointer -= 1
+
+        while True:
+
+            while self.array[left_pointer] < pivot:
+                left_pointer += 1
+
+            while self.array[right_pointer] > pivot:
+                right_pointer -= 1
+
+            if left_pointer >= right_pointer:
+                break
+            self.array[left_pointer], self.array[right_pointer] = self.array[right_pointer], self.array[left_pointer]
+
+            left_pointer += 1
+
+        self.array[left_pointer], self.array[pivot_index] = self.array[pivot_index], self.array[left_pointer]
+
+        return left_pointer
+
+    def quick_sort(self, left_index, right_index):
+        """ Performs quick sort """
+
+        if right_index - left_index <= 0:
+            return
+
+        pivot_index = self.partition(left_index, right_index)
+
+        self.quick_sort(left_index, pivot_index - 1)
+
+        self.quick_sort(pivot_index + 1, right_index)
